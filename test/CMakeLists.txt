@@ -115,6 +115,8 @@ if (MAKE_POMDP)
     AddTestPOMDP(RTBSS)
     AddTestPOMDP(SparseModel)
     AddTestPOMDP(Witness)
+    AddTestPOMDP(PMDPGrid)
+    AddTestPOMDP(PMDPLearner)
 
     if (MAKE_PYTHON)
         # Here we have surely passed in the MDP Python test branch, so we know

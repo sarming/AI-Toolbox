@@ -23,6 +23,22 @@ class GridWorldState {
                 case RIGHT: setX(x_+1); return;
             }
         }
+        void setLeft(Direction d) {
+            switch ( d ) {
+                case RIGHT:    setY(y_-1); return;
+                case LEFT:  setY(y_+1); return;
+                case UP:  setX(x_-1); return;
+                case DOWN: setX(x_+1); return;
+            }
+        }
+        void setRight(Direction d) {
+            switch ( d ) {
+                case LEFT:    setY(y_-1); return;
+                case RIGHT:  setY(y_+1); return;
+                case DOWN:  setX(x_-1); return;
+                case UP: setX(x_+1); return;
+            }
+        }
         void setX(int newX) {
             if ( newX < 0 ) x_ = 0;
             else if ( newX >= MAP_SIZE_X ) x_ = MAP_SIZE_X - 1;
