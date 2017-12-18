@@ -3,7 +3,7 @@
 
 #include <AIToolbox/MDP/Model.hpp>
 #include <AIToolbox/POMDP/Model.hpp>
-#include <vector> 
+#include <vector>
 
 AIToolbox::POMDP::Model<AIToolbox::MDP::Model> makePMDP(std::vector<AIToolbox::MDP::Model> mdps) {
     size_t P = size(mdps);
@@ -47,4 +47,20 @@ auto makeUniformBelief(size_t s0, AIToolbox::POMDP::Model<AIToolbox::MDP::Model>
 
     return b;
 }
+
+auto linspace(double l, double r, size_t n) {
+    if ( n==1 && l!=r) throw std::invalid_argument("l!=r");
+    if ( l > r) throw std::invalid_argument("l>r");
+
+    std::vector<double> v;
+    if ( n==0 ) return v;
+
+    auto step = (r-l)/(n-1);
+    for (; l<r; l+=step)
+        v.push_back(l);
+    v.push_back(r);
+
+    return v;
+}
+
 #endif
