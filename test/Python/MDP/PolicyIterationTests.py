@@ -60,7 +60,7 @@ class MDPPythonPolicyIterationTests(unittest.TestCase):
 
         p = MDP.QGreedyPolicy(qfun)
 
-        for a in xrange(0, 4):
+        for a in range(0, 4):
             self.assertEqual(p.getActionProbability(0, a), 0.25)
             self.assertEqual(p.getActionProbability(15, a), 0.25)
 

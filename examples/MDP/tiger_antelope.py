@@ -211,16 +211,16 @@ def goup(x):
     """ Moves the cursor up by x lines """
     while x > 8:
         up[2] = '9'
-        print "".join(up)
+        print("".join(up))
         x -= 8
 
     up[2] = str(x + 1)
-    print "".join(up)
+    print("".join(up))
 
 def godown(x):
     """ Moves the cursor down by x lines """
     while x:
-        print ""
+        print("")
         x -= 1
 
 def printState(coord):
@@ -239,12 +239,12 @@ def printState(coord):
     for y in range(SQUARE_SIZE-1, -1, -1):
         for x in range(SQUARE_SIZE):
             if (t_x, t_y) == (x, y):
-                print "@",
+                print("@", end=' ')
             elif (a_x, a_y) == (x, y):
-                print "A",
+                print("A", end=' ')
             else:
-                print ".",
-        print ""
+                print(".", end=' ')
+        print("")
 
 def solve_mdp(horizon, epsilon, discount=0.9):
     """
@@ -258,13 +258,13 @@ def solve_mdp(horizon, epsilon, discount=0.9):
         converged. The second element is the value function. The third
         element is the Q-value function, from which a policy can be derived.
     """
-    print time.strftime("%H:%M:%S"), "- Constructing MDP..."
+    print(time.strftime("%H:%M:%S"), "- Constructing MDP...")
 
     # Statespace contains the tiger (x, y) and antelope (x, y). Note that
     # this is a very naive state representation: many of these states can be
     # aggregated! We leave this as an exercise to the reader :)
     # S = [(t_x, t_y, a_x, a_y), .. ]
-    S = list(itertools.product(range(SQUARE_SIZE), repeat=4))
+    S = list(itertools.product(list(range(SQUARE_SIZE)), repeat=4))
 
     # A = tiger actions
     A = ['stand', 'up', 'down', 'left', 'right']
@@ -291,14 +291,14 @@ def solve_mdp(horizon, epsilon, discount=0.9):
     model.setDiscount(discount)
 
     # Perform value iteration
-    print time.strftime("%H:%M:%S"), "- Solving MDP using ValueIteration(horizon={}, epsilon={})".format(
-        horizon, epsilon)
+    print(time.strftime("%H:%M:%S"), "- Solving MDP using ValueIteration(horizon={}, epsilon={})".format(
+        horizon, epsilon))
 
 
     solver = MDP.ValueIteration(horizon, epsilon)
     solution = solver(model)
 
-    print time.strftime("%H:%M:%S"), "- Converged:", solution[0]
+    print(time.strftime("%H:%M:%S"), "- Converged:", solution[0])
     _, value_function, q_function = solution
 
     policy = MDP.Policy(len(S), len(A), value_function)
@@ -308,7 +308,7 @@ def solve_mdp(horizon, epsilon, discount=0.9):
         s = randint(0, SQUARE_SIZE**4 - 1)
 
     totalReward = 0
-    for t in xrange(100):
+    for t in range(100):
         printState(decodeState(s))
 
         if model.isTerminal(s):

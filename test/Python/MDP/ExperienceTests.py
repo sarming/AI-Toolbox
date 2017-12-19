@@ -61,23 +61,23 @@ class MDPPythonExperienceTests(unittest.TestCase):
 
         visits = []
         rewards = []
-        for s in xrange(0, S):
+        for s in range(0, S):
             visits.append([])
             rewards.append([])
-            for a in xrange(0, A):
+            for a in range(0, A):
                 visits[s].append([])
                 rewards[s].append([])
-                for s1 in xrange(0, S):
+                for s1 in range(0, S):
                     visits[s][a].append(generator())
                     rewards[s][a].append(generator())
 
         exp.setVisits(visits);
         exp.setRewards(rewards);
 
-        for s in xrange(0, S):
-            for a in xrange(0, A):
+        for s in range(0, S):
+            for a in range(0, A):
                 visitsSum, rewardSum = 0, 0
-                for s1 in xrange(0, S):
+                for s1 in range(0, S):
                     self.assertEqual( exp.getVisits(s,a,s1), visits[s][a][s1] );
                     self.assertEqual( exp.getReward(s,a,s1), rewards[s][a][s1] );
                     visitsSum += visits[s][a][s1];
