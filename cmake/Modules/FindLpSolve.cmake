@@ -36,7 +36,7 @@ IF (LPSOLVE_INCLUDE_PATH)
         )
 
     FIND_LIBRARY(TMP_LPSOLVE_LIBRARIES
-        NAMES lpsolve55
+        NAMES lpsolve55_pic lpsolve55
         PATHS ${LPSOLVE_LIBRARIES} ${LPSOLVE_LIB_TRIALPATH}
         PATH_SUFFIXES lp_solve)
     SET(LPSOLVE_LIBRARIES ${TMP_LPSOLVE_LIBRARIES} CACHE STRING "Full path to the lpsolve55 library (including the library)" FORCE)
