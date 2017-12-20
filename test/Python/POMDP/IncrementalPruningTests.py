@@ -86,8 +86,27 @@ class POMDPPythonIncrementalPruningTests(unittest.TestCase):
                 return -1
             return 1
 
-        truth = sorted(truth, sorter)
-        vlist = sorted(vlist, sorter)
+        def cmp_to_key(mycmp):
+            'Convert a cmp= function into a key= function'
+            class K:
+                def __init__(self, obj, *args):
+                    self.obj = obj
+                def __lt__(self, other):
+                    return mycmp(self.obj, other.obj) < 0
+                def __gt__(self, other):
+                    return mycmp(self.obj, other.obj) > 0
+                def __eq__(self, other):
+                    return mycmp(self.obj, other.obj) == 0
+                def __le__(self, other):
+                    return mycmp(self.obj, other.obj) <= 0
+                def __ge__(self, other):
+                    return mycmp(self.obj, other.obj) >= 0
+                def __ne__(self, other):
+                    return mycmp(self.obj, other.obj) != 0
+            return K
+
+        truth = sorted(truth, key=cmp_to_key(sorter))
+        vlist = sorted(vlist, key=cmp_to_key(sorter))
 
         # We check each entry by itself to avoid checking observations
         for i in range(0, len(vlist)):

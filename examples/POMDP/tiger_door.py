@@ -100,10 +100,10 @@ man = [
 # Random spaces to make the rendering look nice. Yeah this is ugly, but it's
 # just for the rendering.
 hspacer = "     "
-manhspacer = ' ' * (len(hspacer) / 2 + len(prize[0]) - len(man[0]) / 2)
-numspacer  = ' ' * ((len(prize[0]) - 8) / 2)
+manhspacer = ' ' * int(len(hspacer) / 2 + len(prize[0]) - len(man[0]) / 2)
+numspacer  = ' ' * int((len(prize[0]) - 8) / 2)
 
-clockSpacer = numspacer + ' ' * ((len(hspacer) - 1) / 2)
+clockSpacer = numspacer + ' ' * int((len(hspacer) - 1) / 2)
 strclock = r"/|\-"
 
 # MODEL
