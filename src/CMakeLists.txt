@@ -7,8 +7,8 @@ find_package(Eigen3 3.2 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
 if (MAKE_PYTHON)
-    find_package(PythonLibs 2.7 REQUIRED)
-    find_package(Boost 1.53 COMPONENTS python REQUIRED)
+    find_package(PythonLibs 3 REQUIRED)
+    find_package(Boost 1.53 COMPONENTS python3 REQUIRED)
     # Remove junk at the end of the version that breaks requiring the interpreter for tests later.
     STRING(REGEX REPLACE "[^0-9]+$" "" PYTHONLIBS_VERSION_STRING_STRIPPED ${PYTHONLIBS_VERSION_STRING})
     # Save version of python libs loaded to run tests later.
@@ -85,7 +85,7 @@ if (MAKE_MDP)
             Python/MDP/Policies/EpsilonPolicy.cpp
             Python/MDP/Policies/WoLFPolicy.cpp
             Python/MDPWrappers.cpp)
-        target_link_libraries(MDP ${Boost_PYTHON_LIBRARY})
+        target_link_libraries(MDP ${Boost_PYTHON3_LIBRARY})
         set_target_properties(MDP PROPERTIES PREFIX "")
     endif()
 endif()
@@ -158,7 +158,7 @@ if (MAKE_POMDP)
             Python/POMDP/PolicyInterface.cpp
             Python/POMDP/Policies/Policy.cpp
             Python/POMDPWrappers.cpp)
-        target_link_libraries(POMDP ${Boost_PYTHON_LIBRARY} MDP
+        target_link_libraries(POMDP ${Boost_PYTHON3_LIBRARY} MDP
             ${LPSOLVE_LIBRARIES})
         set_target_properties(POMDP PROPERTIES PREFIX "")
     endif()
