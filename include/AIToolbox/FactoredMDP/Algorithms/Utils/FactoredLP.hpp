@@ -1,6 +1,8 @@
 #ifndef AI_TOOLBOX_FACTORED_MDP_FACTORED_LP_HEADER_FILE
 #define AI_TOOLBOX_FACTORED_MDP_FACTORED_LP_HEADER_FILE
 
+#include <optional>
+
 #include <AIToolbox/FactoredMDP/Types.hpp>
 #include <AIToolbox/FactoredMDP/FactorGraph.hpp>
 
