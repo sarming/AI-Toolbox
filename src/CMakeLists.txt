@@ -1,10 +1,10 @@
 cmake_minimum_required (VERSION 3.0)
 
 find_package(Boost 1.53 REQUIRED)
-include_directories(${Boost_INCLUDE_DIRS})
+include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
 find_package(Eigen3 3.2 REQUIRED)
-include_directories(${EIGEN3_INCLUDE_DIR})
+include_directories(SYSTEM ${EIGEN3_INCLUDE_DIR})
 
 if (MAKE_PYTHON)
     find_package(PythonLibs 3 REQUIRED)
