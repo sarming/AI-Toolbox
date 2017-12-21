@@ -85,8 +85,9 @@ if (MAKE_MDP)
             Python/MDP/Policies/EpsilonPolicy.cpp
             Python/MDP/Policies/WoLFPolicy.cpp
             Python/MDPWrappers.cpp)
-        target_link_libraries(MDP ${Boost_PYTHON3_LIBRARY})
-        set_target_properties(MDP PROPERTIES PREFIX "")
+        target_link_libraries(MDP ${Boost_PYTHON3_LIBRARY} ${PYTHON_LIBRARIES})
+        set_target_properties(MDP PROPERTIES PREFIX ""
+            SUFFIX ".so")
     endif()
 endif()
 
@@ -159,7 +160,8 @@ if (MAKE_POMDP)
             Python/POMDP/Policies/Policy.cpp
             Python/POMDPWrappers.cpp)
         target_link_libraries(POMDP ${Boost_PYTHON3_LIBRARY} MDP
-            ${LPSOLVE_LIBRARIES})
-        set_target_properties(POMDP PROPERTIES PREFIX "")
+            ${LPSOLVE_LIBRARIES} ${PYTHON_LIBRARIES})
+        set_target_properties(POMDP PROPERTIES PREFIX ""
+            SUFFIX ".so")
     endif()
 endif()
